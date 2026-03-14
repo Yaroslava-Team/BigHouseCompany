@@ -90,7 +90,6 @@ function prevImage() {
   modalImage.src = data.images[currentImageIndex];
 }
 
-// Обработчик клика по кнопке Оставить заявку
 applyButton.addEventListener('click', (e) => {
   e.preventDefault();
   const projectKey = applyButton.dataset.project;

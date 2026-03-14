@@ -105,7 +105,33 @@
     </div> 
   </div> 
 </section>
+<!-- Модальное окно для формы получения расчёта -->
+<div class="modal-form" id="formModal">
+  <div class="modal-form__content">
+    <span class="modal-form__close" id="formClose">&times;</span>
+    <h2 class="modal-form__title">Получить расчёт</h2>
+    <p class="modal-form__subtitle">Оставьте контакты, и мы отправим предварительную смету</p>
+    <form class="modal-form__form" id="estimateForm">
+      <div class="form-group">
+        <label for="clientName">Имя</label>
+        <input type="text" id="clientName" placeholder="Имя" required>
+      </div>
+      <div class="form-group">
+        <label for="clientPhone">Телефон</label>
+        <input type="tel" id="clientPhone" placeholder="+7" required>
+      </div>
+      <div class="form-group">
+        <label for="clientEmail">Почта (по желанию)</label>
+        <input type="email" id="clientEmail" placeholder="example@mail.ru">
+      </div>
+      <button type="submit" class="modal-form__btn">Отправить</button>
+    </form>
+  </div>
+</div>
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/constructor.js"></script>
 </body>
 </html>
