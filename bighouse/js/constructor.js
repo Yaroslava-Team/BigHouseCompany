@@ -5,7 +5,7 @@ const SUPABASE_KEY = "sb_publishable_ovErQXGiE8Q4cIeqr6fnyw_-tkO-j8D";
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 
-// Слайдеры
+// слайдеры
 const areaSlider = document.getElementById('areaSlider');
 const areaValue = document.getElementById('areaValue');
 
@@ -27,19 +27,19 @@ const garageValue = document.getElementById('garageValue');
 const priceElement = document.getElementById('totalPrice');
 
 
-// Опции
+// опции
 const floorButtons = document.querySelectorAll('#floorsOptions .option');
 const materialButtons = document.querySelectorAll('#materialOptions .option');
 const roofButtons = document.querySelectorAll('#roofOptions .option');
 
 
-// Текущие значения по умолчанию
+// текущие значения
 let floor = 1;
 let material = 'frame';
 let roof = 'flat';
 
 
-// Цены
+// цены
 const basePricePerM2 = {
   frame: 55000,
   block: 70000,
@@ -61,7 +61,7 @@ const garagePricePerM2 = 20000;
 
 
 
-// Подсчет цены
+// подсчет цены
 function updatePrice() {
 
   const area = parseInt(areaSlider.value, 10);
@@ -88,7 +88,7 @@ function updatePrice() {
 
 
 
-// Обновление значений слайдера
+// обновление значения слайдеров
 function updateSliderValues() {
 
   areaValue.innerText = areaSlider.value;
@@ -104,7 +104,7 @@ function updateSliderValues() {
 
 
 
-// Инициализация по URL (при переходе из проекта)
+// инициализация по URL (при переходе из проекта)
 function initFromURL() {
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -140,7 +140,7 @@ function initFromURL() {
 
 
 
-// Слайдеры события
+// события слайдера
 areaSlider.addEventListener('input', () => {
   updateSliderValues();
   updatePrice();
@@ -166,7 +166,7 @@ garageSlider.addEventListener('input', () => {
 
 
 
-// Выбор пола
+// выбор пола
 floorButtons.forEach(btn => {
   btn.addEventListener('click', () => {
 
@@ -181,7 +181,7 @@ floorButtons.forEach(btn => {
 
 
 
-// Выбор материалов
+// выбор материала
 materialButtons.forEach(btn => {
   btn.addEventListener('click', () => {
 
@@ -196,7 +196,7 @@ materialButtons.forEach(btn => {
 
 
 
-// Выбор крыши
+// выбор крыши
 roofButtons.forEach(btn => {
   btn.addEventListener('click', () => {
 
@@ -210,7 +210,6 @@ roofButtons.forEach(btn => {
 
 
 
-// модальное окно и форма
 document.addEventListener('DOMContentLoaded', function () {
 
   const formModal = document.getElementById('formModal');
@@ -223,7 +222,30 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
-  // Открыть
+  // создание формы
+  const successModal = document.createElement('div');
+  successModal.id = 'successModal';
+  successModal.innerHTML = `
+    <div class="success-modal__content">
+      <div class="success-modal__icon">✓</div>
+      <h3 class="success-modal__title">Заявка отправлена!</h3>
+      <p class="success-modal__text">Мы свяжемся с вами в ближайшее время для консультации и расчёта стоимости проекта.</p>
+      <button class="success-modal__btn" id="successClose">Хорошо</button>
+    </div>
+  `;
+  document.body.appendChild(successModal);
+
+  document.getElementById('successClose').addEventListener('click', () => {
+    successModal.classList.remove('active');
+  });
+
+  successModal.addEventListener('click', (e) => {
+    if (e.target === successModal) {
+      successModal.classList.remove('active');
+    }
+  });
+
+  // Открыть форму окно
   submitBtn.addEventListener('click', function (e) {
     e.preventDefault();
     formModal.style.display = 'flex';
@@ -234,14 +256,14 @@ document.addEventListener('DOMContentLoaded', function () {
     formModal.style.display = 'none';
   });
 
-  // Закрыть по клику вне модального окна
+  // Закрыть по клику вне окна
   window.addEventListener('click', function (e) {
     if (e.target === formModal) {
       formModal.style.display = 'none';
     }
   });
 
-  // Отправка формы
+  // отправка формы
   estimateForm.addEventListener('submit', async (e) => {
 
     e.preventDefault();
@@ -280,6 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
         userId = newUser.id;
       }
 
+      // сборка параметров конструктора
       const area      = parseInt(areaSlider.value);
       const bedrooms  = parseInt(bedroomSlider.value);
       const bathrooms = parseInt(bathroomSlider.value);
@@ -308,9 +331,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (estimateError) throw estimateError;
 
+      // закрытие формы и показ успеха
       formModal.style.display = 'none';
       estimateForm.reset();
-      alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+      successModal.classList.add('active');
 
     } catch (err) {
 
@@ -327,6 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
 
 
 
