@@ -11,7 +11,7 @@
 
 <section class="constructor">
   <div class="container">
-    <!--  назад на главную -->
+    <!-- Возврад на главную  -->
     <div class="back-wrapper">
       <a href="index.html" class="back-btn">← Назад</a>
     </div>
@@ -82,25 +82,15 @@
         </div>
 
         <!-- Терраса -->
-        <div class="control control-checkbox">
-          <label class="checkbox-label">
-            <input type="checkbox" id="terraceCheckbox"> Терраса
-          </label>
-          <div class="slider-wrapper" id="terraceSliderWrapper" style="opacity: 0.5; pointer-events: none;">
-            <label>Площадь террасы <span class="value-hint" id="terraceValue">0</span> м²</label>
-            <input type="range" min="0" max="60" value="0" id="terraceSlider" disabled>
-          </div>
+        <div class="control">
+          <label>Площадь террасы <span class="value-hint" id="terraceValue">0</span> м²</label>
+          <input type="range" min="0" max="60" value="0" id="terraceSlider">
         </div>
 
-        <!-- Гараж -->
-        <div class="control control-checkbox">
-          <label class="checkbox-label">
-            <input type="checkbox" id="garageCheckbox"> Гараж
-          </label>
-          <div class="slider-wrapper" id="garageSliderWrapper" style="opacity: 0.5; pointer-events: none;">
-            <label>Площадь гаража <span class="value-hint" id="garageValue">0</span> м²</label>
-            <input type="range" min="0" max="80" value="0" id="garageSlider" disabled>
-          </div>
+        <!-- Гараж (только слайдер) -->
+        <div class="control">
+          <label>Площадь гаража <span class="value-hint" id="garageValue">0</span> м²</label>
+          <input type="range" min="0" max="80" value="0" id="garageSlider">
         </div>
 
         <!-- Блок стоимости -->
