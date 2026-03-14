@@ -13,7 +13,7 @@ body {
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 100px;
+  padding: 0;
 }
 
 .grid {
@@ -26,25 +26,35 @@ body {
 .header {
   background: #2C463D;
   padding: 24px 0;
+  position: relative;
 }
 
 .header-row {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: auto 1fr auto;
   align-items: center;
 }
 
 .logo {
-  grid-column: 1 / 3;
+  grid-column: 1;
 }
 
 .nav {
-  grid-column: 5 / 13;
+  grid-column: 2;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 32px;
 }
+
+.header-actions {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 20px;
+}
+
 
 .nav a {
   color: white;
@@ -144,7 +154,7 @@ body {
 
 /* ABOUT */
 .about {
-  padding: 160px 0;
+  padding: 260px 0;
   color:#2C463D;
 }
 
@@ -182,25 +192,25 @@ body {
 }
 
 .about-stats {
-  margin-top: 72px;
+  margin-top: 48px;
   display: flex;
   gap: 60px;
 }
 
 .stat-number {
   font-weight: 800;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .stat-label {
   margin-top: 7px;
-  font-size: 24px;
+  font-size: 20px;
   font-style: italic;
 }
 
 /* PROJECTS */
 .projects {
-  padding: 160px 0;
+  padding: 0px 0 160px;
 }
 
 .projects-header {
@@ -249,7 +259,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 24px 24px 0 24px;
+  padding: 24px 16px 24px 24px;
   color: white;
   z-index: 1;
 }
@@ -263,15 +273,15 @@ body {
   border: none;
   background: #2C463D;
   color: white;
-  padding: 10px 24px;
+  padding: 14px 24px;
   border-radius: 18px;
   cursor: pointer;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 /* WHY US */
 .advantages {
-  padding: 160px 0;
+  padding: 60px 0 160px 0;
   color: #2C463D;
 }
 
@@ -549,6 +559,7 @@ body {
 }
 
 /* MODAL */
+
 .modal-project {
   display: none;
   position: fixed;
@@ -695,39 +706,36 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Адаптивность */
-@media (max-width: 1024px) {
-  .modal-content {
-    padding: 30px 30px 30px 40px;
-  }
-  .modal-grid {
-    gap: 30px;
-  }
-  .modal-info h2 {
-    font-size: 28px;
-  }
-  .title-underline {
-    width: 250px;
-  }
+/* Бургер-иконка (скрыта на десктопе) */
+.burger-icon {
+  width: 30px;
+  height: 30px;
+  display: none;             
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .modal-content {
-    padding: 30px 20px;
-  }
-  .modal-grid {
-    grid-template-columns: 1fr;
-  }
-  .modal-gallery {
-    margin-bottom: 30px;
-  }
-  .gallery-controls {
-    justify-content: center;
-  }
-  .modal-info {
-    padding-right: 0;
-  }
-  .title-underline {
-    width: 100%;
-  }
+.burger-icon span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Анимация открытого бургера  */
+.burger-icon.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.burger-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger-icon.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+html {
+  scroll-behavior: smooth;
 }
