@@ -12,7 +12,7 @@ const applyButton = document.querySelector('.modal-info .btn-main');
 const projectsData = {
   forest: {
     title: 'Forest 120 м²',
-    images: ['assets/forestfull.png', 'assets/forest-2.png', 'assets/forest-3.png'],
+    images: ['assets/forestfull.png', 'assets/forest-2.jpg', 'assets/forest-3.jpg'],
     description: `
       <p>Компактный дом для комфортной жизни за городом.</p>
       <p>Продуманная планировка с двумя спальнями, просторной кухней-гостиной и выходом на террасу. Панорамные окна обеспечивают естественное освещение и ощущение единства с природой.</p>
@@ -26,7 +26,7 @@ const projectsData = {
   },
   family: {
     title: 'Family 180 м²',
-    images: ['assets/familyfull.png', 'assets/family-2.png', 'assets/family-3.png'],
+    images: ['assets/familyfull.png', 'assets/family-2.jpg', 'assets/family-3.jpg'],
     description: `
       <p>Функциональный дом для большой семьи.</p>
       <p>Три спальни, просторная гостиная со вторым светом и отдельная зона отдыха создают комфортное пространство для жизни и приема гостей. Предусмотрен гараж и удобная хозяйственная зона.</p>
@@ -40,7 +40,7 @@ const projectsData = {
   },
   modern: {
     title: 'Modern 250 м²',
-    images: ['assets/modernfull.png', 'assets/modern-2.png', 'assets/modern-3.png'],
+    images: ['assets/modernfull.png', 'assets/modern-2.jpg', 'assets/modern-3.jpg'],
     description: `
       <p>Современная архитектура и простор.</p>
       <p>Дом с плоской крышей и лаконичным фасадом в стиле минимализм. Большая гостиная, кабинет, мастер-спальня с гардеробной и продуманная зона хранения делают проект удобным для постоянного проживания.</p>
